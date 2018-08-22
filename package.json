@@ -4,6 +4,7 @@
 	},
 	"scripts": {
 		"docs:dev": "vuepress dev docs",
-		"docs:build": "vuepress build docs"
+		"docs:build": "vuepress build docs",
+		"deploy": "npm run build & git add . & git commit -m 'deploy' & npm run v & npm run p && git push"
 	}
 }

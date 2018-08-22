@@ -14,8 +14,6 @@ At the heart of our brand is the will to enable and support local development & 
 
 ## Topics
 
-**Built-in markdown extensions**
-
 * [Introduction](/introduction)
 * [Getting Started](/getting-started)
 * [API Description](/api-description)
