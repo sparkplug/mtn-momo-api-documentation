@@ -12,14 +12,20 @@
 
 At the heart of our brand is the will to enable and support local development & transformation through technology. With that in mind, through this portal we start the journey of exposing our Mobile Money APIs to the public thus easing access for Developers and Entrepreneurs who wish to innovate. 
 
-## Topics
+# Documentation
 
-* [Introduction](/introduction)
-* [Getting Started](/getting-started)
-* [API Description](/api-description)
-* [Use Cases](/use-cases)
-* [Testing](/testing)
+## Online 
 
+[Online](https://sparkplug.github.io/mtn-momo-api-documentation/)
+
+## Locally
+
+```bash
+git clone https://github.com/sparkplug/mtn-momo-api-documentation.git
+cd mtn-momo-api-documentation
+npm install -D vuepress
+npm run docs:dev
+```
 
 ## License
 
