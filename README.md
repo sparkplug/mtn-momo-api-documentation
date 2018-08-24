@@ -16,7 +16,7 @@ At the heart of our brand is the will to enable and support local development & 
 
 ## Online 
 
-[Online](https://sparkplug.github.io/mtn-momo-api-documentation/)
+[Online](https://mtn-momo-api-documentation.firebaseapp.com/)
 
 ## Locally
 
