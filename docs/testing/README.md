@@ -16,7 +16,7 @@ Developer need to Signup and Subscribe to a Starter Product before accessing any
 
 ## Oauth Token
 
-Oauth Token is generated from the merchants’ API Key and Secret. API Key and Secret can be obtained through the provisioning API in Sandbox as described in 3.2.2
+Oauth Token is generated from the merchants’ API Key and Secret. API Key and Secret can be obtained through the provisioning API in Sandbox.
 
 ## Target Environment
 

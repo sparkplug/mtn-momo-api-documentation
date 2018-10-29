@@ -5,23 +5,8 @@ sidebarDepth: 0
 
 # Getting Started
 
+In order to use the API platform, you will need to register for an account [here]( https://momodeveloper.mtn.com/). An account activation link will be sent in an email to the email address you used in registering for a developer account; the activation link expires within 24 hours of it being sent.
 
-Follow the following 9 simple steps to get Started
+After you have activated your account, and logged in, click on your “Username” at the top of the login page; select “PROFILE” from the drop down list. You should then be able to subscibe to a product. 
 
-a) Signup for MTN MoMo API
-
-b) Login then Click Subscribe to a product under the product Tab to obtain Subscription key.
-
-c) Check and fetch your Subscription Keys under your profile.
-
-d) Generate API User and API Key using the provisioning API described in 3.2.2
-
-e) Generate a Token using your newly created API User and API key as described in 3.2.3
-
-f) Navigate to the desired API and use your Subscription Key and Token to connect to API Endpoints
-
-g) Try out the APIs on the Portal
-
-h) Download the testcases here
-
-i) Use the testing MSISDNs mentioned in section 5.4
+In the next section, we shall provision an API User and Key.
