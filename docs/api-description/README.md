@@ -1,6 +1,6 @@
 ---
 title: API Description
-sidebarDepth: 2
+sidebarDepth: 3
 ---
 
 # API Description
@@ -33,9 +33,8 @@ In the Sandbox a provisioning API is used to create the API User and API Key, wh
 The sections below describe the different steps required in creating API User and API key in Sandbox and Production Environments.
 
 ## Sandbox Provisioning
-The Steps below describes
 
-## Create API User
+### Create API User
 
 <img :src="$withBase('/create-apiuser.png')" alt="createapiuser">
 
@@ -103,3 +102,118 @@ Its possible to fetch API user details such as Call Back Host. However its not p
 Provider shall be required to generate a new Key should they lose the existing one.
 
 <img :src="$withBase('/create-apiuser.png')" alt="createapuser">
+
+a) The Provider sends a GET /provisioning/v1_0/apiuser/{APIUser} request to Wallet platform.
+
+b) The Provider specifies the API User in the URL and subscription Key in the header.
+
+c) Wallet Platform responds with 200 Ok and details of the user.
+
+d) TargetEnvironment is preconfigured to sandbox in the Sandbox environment, therefore Providers will not have the option of setting it to a different parameter.
+
+### Example
+
+GET `provisioning/v1_0/apiuser/ c72025f5-5cd1-4630-99e4-8ba4722fad56`
+
+Host: `pg-all.azure-api.net`
+
+Ocp-Apim-Subscription-Key: `d484a1f0d34f4301916d0f2c9e9106a2`
+
+**Response:**
+```
+HTTP/1.1 200 Accepted
+date: Wed, 10 Oct 2018 09:16:15 GMT
+{
+"providerCallbackHost": "clinic.com",
+"targetEnvironment": "sandbox"
+}
+```
+
+## Production Provisioning
+
+Production API User and API Key are provisioned and managed on the Partner Portal
+
+Partner Portal is the wallet portal granted to partners after Go-Live. The credentials for this portal are shared with partners after Go-live.
+
+### Log on to Partner Portal
+
+The URL and Credentials for partner portal are to be obtained after Go-live
+
+<img :src="$withBase('/logon-partnerportal.png')" alt="logon-partnerportal">
+
+### Create API user
+
+Partner shall Click on the Top right under user profile to access the option.
+
+Partner shall click on the Create API user Option shown below.
+
+<img :src="$withBase('/create-apiuser1.png')" alt="create-apiuser1">
+
+Partner shall fill the in the callback URL and select a transaction wallet.
+
+<img :src="$withBase('/create-apiuser2.png')" alt="create-apiuser2">
+
+The table below describes the different fields required when creating an API User
+
+| Field         | Optionality   | Description   |
+| ------------- | ------------- | ------------- |
+| Account       | Mandatory     | Drop down option with available wallet. Partner shall choose main Transaction Wallet |
+| Provider Callback Host  | Mandatory  | Partner Subdomain.Example `www.myshop.com` |
+| Payment Server URL  | Mandatory   | This shall be the callback url Example: `https://myshop.com/payments`  |
+| Gateway URL  | Optional | This should be left empty. |
+
+Partner shall click Ok after filling all the mandatory fields.
+
+Upon submission ECW creates the API User and API key. API Key is displayed as a flash message as shown below.
+
+<img :src="$withBase('/create-apiuser3.png')" alt="create-apiuser3">
+
+Its also possible for partner to delete and re-cerate an API User.
+
+## Oauth 2.0
+
+The Open API is using Oauth 2.0 token for authentication of request. Client will request an access token using Client Credential Grant according to RFC 6749. The token received is according to RFC 6750 Bearer Token.
+
+The API user and API key are used in the basic authentication header when requesting the access token. The API user and key are managed in the Partner GUI for the country where the account is located. The Partner can create and manage API user and key from the Partner GUI.
+
+In case of sandbox the API Key and API User are managed through a Provisioning API as described on 3.2.2
+
+The received token have an expiry time. The token same token can be used used for transactions until it is expired. A new token is requested by using the `POST` /token service in the same way as for the initial token. The new token can be requested before the previous have expired to avoid authentication failure due to expired token.
+
+> **Important:**
+ The token must be treated as a credential and kept secret. The party that have access to the token will be authenticated as the user that requested the token.
+ The below sequence describes the flow for requesting a token and using the token in a request.
+
+ <img :src="$withBase('/oauth_img.png')" alt="oauth_img">
+
+a) Provider system request an access token using the API Key and API user as authentication.
+b) Wallet platform authenticates credentials and respond with the access token
+3) Provider system will use the access token for any request that is sent to Wallet Platform, e.g. `POST /requesttopay`
+
+**Note: The same token shall be used if it is not expired.**
+
+## API Methods
+
+The API is using POST, GET, PUT methods. This section gives an overview of the interaction sequence used in the API and the usage of the methods.
+
+### POST
+
+POSTmethod is used for creating a resource in Wallet Platform. The request includes a reference id which is used to uniquely identify the specific resource that are created by the POST request. If a POST is using a reference id that is already used, then a duplication error response will be sent to the client.
+
+Example: `POST /requesttopay`
+
+The `POST` is an asynchronous method. The Wallet Platform will validate the request to ensure that it correct according to the API specification and then answer with HTTP 202 Accepted. The created resource will get status PENDING. Once the request has been processed the status will be updated to SUCCESSFUL or FAILED. The requester may then be notified of the final status through callback as described in 4.1
+
+### GET
+
+GET is used for requesting information about a specific resource. The URL in the GET shall include the reference of the resource. If a resource was created with POST then the reference id that was provided in the request is used a the identity of the resource.
+
+Example:
+
+`POST /requesttopay` request is sent with X-Reference-Id = `11377cbe-374c-43f6-a019-4fb70e57b617`
+
+`GET /requesttopay/11377cbe-374c-43f6-a019-4fb70e57b617` will return the status of the request.
+
+### PUT
+
+The `PUT` method is used by the Open API when sending callbacks. Callback is sent if a callback URL is included in the `POST` request. The Wallet Platform will only send the callback once. There is no retry on the callback if the Partner system does not respond. If the callback is not received, then the Partner system can use GET to validate the status.
