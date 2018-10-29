@@ -10,6 +10,7 @@ module.exports = {
       ['/getting-started/', 'Getting Started'],
       ['/api-description/', 'API Description'],
       ['/use-cases/', 'Use Cases'],
+      ['/common-error-codes/', 'Common Error Codes'],
       ['/testing/', 'Testing']
     ]
   }
