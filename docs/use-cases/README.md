@@ -5,11 +5,136 @@ sidebarDepth: 2
 
 # Use Cases
 
+This section describes the services in the Open API.
+
+**Note: It’s expected that the developer has an access token as described in 2.2.2**
+
+## Request to Pay
+
+Request to Pay service is used for requesting a payment from a customer (Payer). This can be used by e.g. an online web shop to request a payment for a customer. The customer is requested to approve the transaction on the customer client.
+
+<img :src="$withBase('/request-to-pay.png')" alt="request-to-pay">
+
+a) Customer (Payer) have selected product(s) in the merchant web shop and decided to check out. Customer select to pay with Mobile Money.
+
+b) The provider system collects the account information for the customer e.g. mobile number and calculate the total amount of the products.
+
+c) The provider system sends a request to pay (POST /requesttopay) operation to Wallet Platform. This request includes the amount and customer (Payer) account holder number.
+
+d) Wallet Platform will respond with HTTP 202 Accepted to the provider system
+
+e) Provider shall inform the customer that a payment needs to be approved, by giving information on the merchant web page. For example, the merchant  could show information that payment is being processed and that customer needs to approve using the own client, e.g. USSD, mobile app.
+
+f) Wallet Platform will process the request so that the customer can approve the payment. The request to pay will be in PENDING state until the customer have approved/Rejected the payment.
+
+g) The Customer (Payer) will use his/her own client to review the payment. Customer can approve or reject the payment.
+
+h) Wallet platform will transfer the funds if the customer approves the payment. Status of the payment is updated to SUCCESSFUL or FAILED.
+
+i) If a callback URL was provided in the POST /requesttopay then a callback will be sent once the request to pay have reached a final state (SUCCESSFUL, FAILED). Note the callback will only be sent once. There is no retry.
+
+j) GET request can be used for validating the status of the transaction. GET is used if the partner system has not requested a callback by providing a callback URL or if the callback was not received.
+
+## Pre-Approval
+
+Pre-approval is used to setup an auto debit towards a customer. The Partner can request a pre-approval from the customer. Once the customer has approved then the partner can debit the customer account without authorization from the customer.
+
+The call flow for setting up a pre-approval is like the request to pay use case. The following picture describes the sequence for pre-approval.
+
+<img :src="$withBase('/preapproval.png')" alt="preapproval">
+
+a) The Provider sends a POST /preapproval request to Wallet platform.
+
+b) Provider shall inform the customer that pre-approval needs to be approved.
+
+c) Customer (Payer) will use the own client to view the pre-approval request. Customer can approve or reject the request.
+
+d) Callback will be sent if a callback URL was provided in the POST request. The callback is sent when the request has reach a final state (Successful, Failed).
+
+e) The Provider can use the GET request to validate the status of the pre-approval.
+
+## Transfer
+
+Transfer is used for transferring money from the provider account to a customer.
+
+The below sequence gives an overview of the flow of the transfer use case.
+
+<img :src="$withBase('/transfer.png')" alt="transfer">
+
+a) The Provider sends a POST /transfer request to Wallet platform.
+
+b) Wallet platform will directly respond to indicate that the request is received and will be processed.
+
+c) Wallet platform will authorize the request to ensure that the transfer is allowed. The funds will be transferred from the provider account to the d) Payee account provided in the transfer request.
+
+e) Callback will be sent if a callback URL was provided in the POST request. The callback is sent when the request has reach a final state (SUCCESSFUL, FAILED).
+
+f) The Provider can use the GET request to validate the status of the transfer.
+
+## Validate Account Holder
+
+Validate account holder can be used to do a validation if a customer is active and able to receive funds. The use case will only validate that the customer is available and active. It does not validate that a specific amount can be received.
+
+The sequence for the validate account holder is described below.
+
+<img :src="$withBase('/validate-account.png')" alt="validate-account">
+
+a) The Partner can send a `GET /accountholder` request to validate is a customer is active. The Partner provides the id of that customer as part of the URL
+
+b) Wallet platform will respond with `HTTP 200` if the account holder is active.
+
+## Get Balance
+
+Get balance request is used to check the balance on the default account connected to the API User. The following is the sequence flow for get balance use case.
+
+<img :src="$withBase('/get-balance.png')" alt="get-balance">
+
+
+a) The partner will send a GET /account/balance request
+
+b) Wallet platform will respond with the available balance on the API user account.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
 This section describes the different services in the Open API. It is expected that a developer has an access token by this point.
 
 ## Request to Pay
 
-Request to Pay service is used for requesting a payment from a customer (Payer). This can be used by e.g. an online web shop to request a payment for a customer. The customer is requested to approve the transaction on the customer client. 
+Request to Pay service is used for requesting a payment from a customer (Payer). This can be used by e.g. an online web shop to request a payment for a customer. The customer is requested to approve the transaction on the customer client.
 
 
 ### How it works
@@ -18,21 +143,21 @@ This operation is used to request a payment from a customer (Payer). The payer w
 
 The sequence below describes how the `requesttopay` service is used:
 
-![Request to Pay](/request-to-pay.png) 
+![Request to Pay](/request-to-pay.png)
 
 1.	Customer has selected product(s) in the merchant web shop and decided to check out. Customer select to pay with Mobile Money.
 2.	The provider system collects the account information for the customer e.g. mobile number and calculate the total amount of the products.
-3.	The provider system sends a request to pay (POST /requesttopay) operation to Wallet Platform. This request includes the amount and customer account holder number. 
+3.	The provider system sends a request to pay (POST /requesttopay) operation to Wallet Platform. This request includes the amount and customer account holder number.
 4.	Wallet Platform will respond with HTTP 202 Accepted to the provider system.
 5.	Provider shall inform the customer that a payment needs to be approved, by giving information on the merchant web page. For example, the merchant could show information that payment is being processed and that customer needs to approve using the own client, e.g. USSD or mobile app.
 6.	Wallet Platform will process the request so that the customer can approve the payment. The request to pay will be in PENDING state until the customer has approved or rejected the payment.
 7.	The Customer will use her own client to review the payment and can approve or reject the payment.
 8.	Wallet platform will transfer the funds if the customer approves the payment. Status of the payment is updated to SUCCESSFUL or FAILED.
-9.	If a callback URL was provided in the `POST /requesttopay` then a callback will be sent once the request to pay has reached a final state 
-(SUCCESSFUL, FAILED). 
-::: warning 
+9.	If a callback URL was provided in the `POST /requesttopay` then a callback will be sent once the request to pay has reached a final state
+(SUCCESSFUL, FAILED).
+::: warning
 Note the callback will only be sent once. There is no retry.
-::: 
+:::
 10.	`GET` request can be used for validating the status of the transaction. `GET` is used if the partner system has not requested a callback by providing a callback URL or if the callback was not received.
 
 ### Request to Pay POST URL
@@ -55,7 +180,7 @@ What might the Request Body look like? Here is a sample:
 }
 ```
 
-Below is a description of what each property means 
+Below is a description of what each property means
 
 | Property        | Type           | Description |
 | ------------- |:-------------:| :-----|
@@ -70,7 +195,7 @@ Below is a description of what each property means
 
 An example code sample for this API call using Curl would look something like this:
 
-```bash 
+```bash
 
 curl -v -X POST "https://pg-all.azure-api.net/testpg/v1_0/requesttopay"
 -H "Authorization: "
@@ -80,12 +205,12 @@ curl -v -X POST "https://pg-all.azure-api.net/testpg/v1_0/requesttopay"
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
 Same call in Python 2.7 would look like this:
 
-```python 
+```python
 ########### Python 2.7 #############
 import httplib, urllib, base64
 
@@ -143,7 +268,7 @@ except Exception as e:
 ####################################
 ```
 
-The API then then sends a `Response` to the request that has a numeric code, string text and a message. 
+The API then then sends a `Response` to the request that has a numeric code, string text and a message.
 
 |  Code        | String           | Message |
 | ------------- |:-------------| :-----|
@@ -201,7 +326,7 @@ The preApproval service is used to request a pre approval for requestToPay opera
 
 ### How it works
 
-Pre-approval is used to setup an auto debit towards a customer. The Partner can request a pre-approval from the customer. Once the customer has approved then the partner can debit the customer account without authorization from the customer. The call flow for setting up a pre-approval is like the request to pay use case. 
+Pre-approval is used to setup an auto debit towards a customer. The Partner can request a pre-approval from the customer. Once the customer has approved then the partner can debit the customer account without authorization from the customer. The call flow for setting up a pre-approval is like the request to pay use case.
 
 The diagram below describes the sequence for pre-approval.
 
@@ -263,12 +388,12 @@ curl -v -X POST "https://pg-all.azure-api.net/testpg/v1_0/preapproval"
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
 Here is a sample of the `Request Body` for that call:
 
-```json 
+```json
 {
   "payer": {
     "partyIdType": "MSISDN",
@@ -280,7 +405,7 @@ Here is a sample of the `Request Body` for that call:
 }
 ```
 
-The API then then sends a `Response` to the request that has a numeric code, string text and a message. 
+The API then then sends a `Response` to the request that has a numeric code, string text and a message.
 
 |  Code        | String           | Message |
 | ------------- |:-------------| :-----|
@@ -307,7 +432,7 @@ The below sequence gives an overview of the flow of the transfer use case.
 
 What actually happens here? Let's look at the steps:
 
-1.	The Provider sends a POST /transfer request to Wallet platform. 
+1.	The Provider sends a POST /transfer request to Wallet platform.
 2.	Wallet platform will directly respond to indicate that the request is received and will be processed.
 3.	Wallet platform will authorize the request to ensure that the transfer is allowed. The funds will be transferred from the provider account to the Payee account provided in the transfer request.
 4.	Callback will be sent if a callback URL was provided in the POST request. The callback is sent when the request has reach a final state (SUCCESSFUL, FAILED).
@@ -325,12 +450,12 @@ curl -v -X POST "https://pg-all.azure-api.net/testpg/v1_0/transfer"
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
 The sample request body for it:
 
-```json 
+```json
 {
   "amount": "string",
   "currency": "string",
@@ -344,7 +469,7 @@ The sample request body for it:
 }
 ```
 
-The API then then sends a `Response` to the request that has a numeric code, string text and a message. 
+The API then then sends a `Response` to the request that has a numeric code, string text and a message.
 
 |  Code        | String           | Message |
 | ------------- |:-------------| :-----|
@@ -360,7 +485,7 @@ The API then then sends a `Response` to the request that has a numeric code, str
 
 ## Validate Account Holder
 
-This operation is used to check if an account holder is registered and active in the system. Validate account holder can be used to do a validation if a customer is active and able to receive funds. The use case will only validate that the customer is available and active. It does not validate that a specific amount can be received. 
+This operation is used to check if an account holder is registered and active in the system. Validate account holder can be used to do a validation if a customer is active and able to receive funds. The use case will only validate that the customer is available and active. It does not validate that a specific amount can be received.
 
 ### How It Works
 
@@ -377,13 +502,13 @@ Please note that this API call only supports `GET` requests. :smile:
 
 Curl sample code to illustrate how this might work:
 
-```bash 
+```bash
 curl -v -X GET "https://pg-all.azure-api.net/testpg/v1_0/accountholder/{accountHolderIdType}/{accountHolderId}/active"
 -H "Authorization: "
 -H "X-Target-Environment: "
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
 
@@ -412,15 +537,17 @@ Please note that this API call only supports `GET` requests. :smile:
 
 Sample code to show this call might work with Curl:
 
-```bash 
+```bash
 curl -v -X GET "https://pg-all.azure-api.net/testpg/v1_0/account/balance"
 -H "Authorization: "
 -H "X-Target-Environment: "
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
 ### Request URL
 
 `https://pg-all.azure-api.net/testpg/v1_0/account/balance`
+
+-->
