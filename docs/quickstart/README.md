@@ -9,11 +9,11 @@ Y'ello, in this section we'll walk you through getting up and running on our Mob
 
 Here you will:
 
-1. [Create An Account](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_1-create-an-account)
-2. [Subscribe To Our Products](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_2-subscribe-to-our-products)
-3. [Manage Your Subscriptions](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_3-manage-your-subscriptions)
-4. [Register Your App](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_4-register-your-app)
-5. [Start Building With Our Sandbox!](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_5-start-building-with-our-sandbox)
+1. Create An Account
+2. Subscribe To Our Products
+3. Manage Your Subscriptions
+4. Register Your App
+5. Generate API User and API Key
 
 ## 1. Create An Account
 
@@ -21,11 +21,9 @@ Follow this link to our developer portal and create an account: [https://momodev
 
 You should receive a confirmation email in your inbox.
 
-### Note:
-
-An account activation link will be sent in an email.
-
-The activation link expires within 24 hours of it being sent, and you will need to register for another account.
+::: tip 
+An account activation link will be sent in an email. The activation link expires within 24 hours of it being sent, and you will need to register for another account.
+:::
 
 ## 2. Subscribe to our Products
 
@@ -65,13 +63,9 @@ Click the `Register Application` button to create your first app. When you are d
 <img :src="$withBase('/your-applications.png')" alt="your-applications.png)">
 
 
-## 5. Start Building With Our Sandbox!
+## 5. Generate API User and API Key
 
-You are now ready to start we building with our Mobile Money Open API.
-
-Take a look at our [Use Cases](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#request-to-pay) to see how you can use our API.
-
-We suggest going over to our [Sandbox](https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST) and familiarize yourself with our [Sandbox Documentation](https://momodeveloper.mtn.com/mtn-momo-api-documentation/api-description/#sandbox-provisioning)
+You are now almost ready to start we building with our Mobile Money Open API. The next thing we need to do is to Provision the API User and API Key using the Sandbox Provisioning API. We do this in the next section.
 
 
 
@@ -79,6 +73,13 @@ We suggest going over to our [Sandbox](https://momodeveloper.mtn.com/docs/servic
 
 
 
+
+
+
+
+<!-- Take a look at our [Use Cases](/use-cases/#request-to-pay) to see how you can use our API.
+
+We suggest going over to our [Sandbox](https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST) and familiarize yourself with our [Sandbox Documentation](https://momodeveloper.mtn.com/mtn-momo-api-documentation/api-description/#sandbox-provisioning) -->
 
 
 <!--

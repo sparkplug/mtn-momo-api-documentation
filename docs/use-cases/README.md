@@ -80,7 +80,7 @@ Validate account holder can be used to do a validation if a customer is active a
 
 The sequence for the validate account holder is described below.
 
-<img :src="$withBase('/validate-account.png')" alt="validate-account">
+<img :src="$withBase('/validate_account_holder.png')" alt="validate-account">
 
 a) The Partner can send a `GET /accountholder` request to validate is a customer is active. The Partner provides the id of that customer as part of the URL
 
@@ -97,3 +97,6 @@ a) The partner will send a GET /account/balance request
 
 b) Wallet platform will respond with the available balance on the API user account.
 
+# Let's get testing
+
+We now have an understanding of the structure of the API, let us test it!

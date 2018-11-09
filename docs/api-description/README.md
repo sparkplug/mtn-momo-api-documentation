@@ -1,18 +1,9 @@
 ---
-title: API Description
+title: API User & API Key Management
 sidebarDepth: 3
 ---
 
-# API Description
-
-# Getting Started
-
-In order to use the API platform, you will need to register for an account [here]( https://momodeveloper.mtn.com/). An account activation link will be sent in an email to the email address you used in registering for a developer account; the activation link expires within 24 hours of it being sent.
-
-After you have activated your account, and logged in, click on your “Username” at the top of the login page; select “PROFILE” from the drop down list. You should then be able to subscibe to a product.
-
-In the next section, we shall provision an API User and Key.
-
+# API User and API Key Management
 
 ## Authentication
 
@@ -45,9 +36,7 @@ The sections below describe the different steps required in creating API User an
 
 ### Create API User
 
-<img :src="$withBase('/create-apiuser.png')" alt="createapiuser">
-
-### Example
+<img :src="$withBase('/create_apiuser.png')" alt="Create API User">
 
 a) The Provider sends a POST /provisioning/v1_0/apiuser request to Wallet platform.
 
@@ -57,11 +46,13 @@ c) Reference ID will be used as the User ID for the API user to be created.
 
 d) Wallet Platform creates the User and responds with 201
 
+### Example
+
 **Request:**
 
-POST `https://pg-all.azure-api.net/provisioning/v1_0/apiuser HTTP/1.1`
+POST `https://momodeveloper.mtn.com/v1_0/apiuser HTTP/1.1`
 
-Host: `pg-all.azure-api.net`
+Host: `momodeveloper.mtn.com`
 
 X-Reference-Id: `c72025f5-5cd1-4630-99e4-8ba4722fad56`
 
@@ -74,7 +65,7 @@ Ocp-Apim-Subscription-Key: `d484a1f0d34f4301916d0f2c9e9106a2`{"providerCallbackH
 
 ## Create API Key
 
-<img :src="$withBase('/create-apikey.png')" alt="createapikey">
+<img :src="$withBase('/create_apikey.png')" alt="Create API Key">
 
 a) The Provider sends a POST /provisioning/v1_0/apiuser/{APIUser}/apikey request to Wallet platform.
 
@@ -88,9 +79,9 @@ d) Provider now has both API User and API Key created.
 
 **Request:**
 
-POST `provisioning/v1_0/apiuser/c72025f5-5cd1-4630-99e4-8ba4722fad56/apikey HTTP/1.1`
+POST `/v1_0/apiuser/c72025f5-5cd1-4630-99e4-8ba4722fad56/apikey HTTP/1.1`
 
-Host: `pg-all.azure-api.net`
+Host: `momodeveloper.mtn.com`
 
 Ocp-Apim-Subscription-Key: `d484a1f0d34f4301916d0f2c9e9106a2`
 
@@ -110,7 +101,7 @@ Its possible to fetch API user details such as Call Back Host. However its not p
 
 Provider shall be required to generate a new Key should they lose the existing one.
 
-<img :src="$withBase('/create-apiuser.png')" alt="createapuser">
+<img :src="$withBase('/get_apiuser_details.png')" alt="Get API User Details">
 
 a) The Provider sends a GET /provisioning/v1_0/apiuser/{APIUser} request to Wallet platform.
 
@@ -122,9 +113,9 @@ d) TargetEnvironment is preconfigured to sandbox in the Sandbox environment, the
 
 ### Example
 
-GET `provisioning/v1_0/apiuser/ c72025f5-5cd1-4630-99e4-8ba4722fad56`
+GET `/v1_0/apiuser/ c72025f5-5cd1-4630-99e4-8ba4722fad56`
 
-Host: `pg-all.azure-api.net`
+Host: `momodeveloper.mtn.com`
 
 Ocp-Apim-Subscription-Key: `d484a1f0d34f4301916d0f2c9e9106a2`
 
@@ -160,7 +151,7 @@ Partner shall click on the Create API user Option shown below.
 
 Partner shall fill the in the callback URL and select a transaction wallet.
 
-<img :src="$withBase('/create-apiuser2.png')" alt="create-apiuser2">
+<img :src="$withBase('/portal_create_apiuser.png')" alt="create-apiuser2">
 
 The table below describes the different fields required when creating an API User
 
@@ -226,3 +217,8 @@ Example:
 ### PUT
 
 The `PUT` method is used by the Open API when sending callbacks. Callback is sent if a callback URL is included in the `POST` request. The Wallet Platform will only send the callback once. There is no retry on the callback if the Partner system does not respond. If the callback is not received, then the Partner system can use GET to validate the status.
+
+
+## Onto the use cases
+
+Now we are ready to take a look at our [Use Cases](/use-cases/) to see how you can use our API.
