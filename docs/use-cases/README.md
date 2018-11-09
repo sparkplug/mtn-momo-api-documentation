@@ -5,11 +5,13 @@ sidebarDepth: 2
 
 # Use Cases
 
-This section describes the services in the Open API.
+Here you'll find the variety of ways that you can use the API:
 
-::: tip 
-It’s expected that the developer has an access token as described in the previous section
-:::
+1. [Request To Pay](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#request-to-pay)
+2. [Pre-Approval](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#pre-approval)
+3. [Transfer](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#transfer)
+4. [Validate Account Holder](https://momodeveloper.mtn.com/mtn-momo-api-documentation//use-cases/#validate-account-holder)
+5. [Get Balance](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#validate-account-holder)
 
 
 ## Request to Pay
@@ -96,4 +98,3 @@ Get balance request is used to check the balance on the default account connecte
 a) The partner will send a GET /account/balance request
 
 b) Wallet platform will respond with the available balance on the API user account.
-
