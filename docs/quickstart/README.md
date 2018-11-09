@@ -5,6 +5,59 @@ sidebarDepth: 0
 
 # Quickstart Guide
 
+Y'ello, in this section we'll walk you through getting up and running on our Mobile Money API.
+
+## 1. Create An Account
+
+Follow this link to our developer portal and create an account [https://momodeveloper.mtn.com/signup](https://momodeveloper.mtn.com/signup)
+
+You should receive a confirmation email in your inbox.
+
+## 2. Subscribe to our Products
+
+In the Products page on our developer portal you should see 4 items you can subscrbe to:
+    - Collection Widget
+    - Collections
+    - Disbursements
+    - Remittances
+
+### Note:
+
+Each product will have a dropdown with a brief description, a link to the corresponding documentation and `Subscribe` button.
+
+<img :src="$withBase('/products.png')" alt="products">
+
+- Click `Subscribe` to generate access to the Product.
+
+## 3. Manage Subscriptions
+
+### Subscriptions
+
+Developers are issued a `Primary Key` and `Secondary Key` for every product.
+
+Both Primary and secondary Subscription key provides access to the API. Without one of them a developer cannot access any of the APIs.
+
+Subscriptions are stored under the user profile and have no expiry.
+
+Here you can view the status of the package, date it started, conduct cancellation or activation actions, and also show or regenerate your `Primary Key` and `Secondary Key`
+
+<img :src="$withBase('/your-subscriptions.png')" alt="your-subscriptions.png">
+
+
+## 4. Register your App
+
+Here is where you register all of your apps.
+
+Click the `Register Application` button to create your first app. When you are done creating your first app, it might look something like this.
+
+<img :src="$withBase('/your-applications.png')" alt="your-applications.png)">
+
+
+
+
+
+<!--
+
 ## Profile
 
 In this section, you will see your personal information, account type and developer level. You can also change your `Account Password` and `Account Information` here.
@@ -96,3 +149,6 @@ If all the information provided checks out, your application should now be ready
 ## MTN MoMoPay Widget
 
 There is also a MoMo Widget that is not listed along with the packages. This widget can be used to integrate a MoMoPay checkout button to accept MoMo payments on your e-commerce site. You can see more about it [here](https://pg-all.portal.azure-api.net/widget-api)
+
+
+-->
