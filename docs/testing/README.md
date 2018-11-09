@@ -10,13 +10,15 @@ To facilitate testing a set of predefined users and Test accounts are provided.
 These users and accounts have a predefined test scenario.
 
 The Sandbox URL is:
-`https://pg-all.portal.azure-api.net/`
+[https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST](https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST)
 
-Developer need to Signup and Subscribe to a Starter Product before accessing any of the APIs.
+Developer need to [Signup](https://momodeveloper.mtn.com/signup) and [Subscribe](https://momodeveloper.mtn.com/products) to a Product before accessing any of the APIs.
 
-## Oauth Token
+## OAuth Token
 
-Oauth Token is generated from the merchants’ API Key and Secret. API Key and Secret can be obtained through the provisioning API in Sandbox.
+OAuth Token is generated from the merchants’ API Key and Secret.
+
+API Key and Secret can be obtained through the provisioning API in Sandbox.
 
 ## Target Environment
 
