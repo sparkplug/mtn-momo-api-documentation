@@ -5,21 +5,35 @@ sidebarDepth: 0
 
 # Quickstart Guide
 
-Y'ello, in this section we'll walk you through getting up and running on our Mobile Money API.
+Y'ello, in this section we'll walk you through getting up and running on our Mobile Money Open API.
+
+Here you will:
+
+1. [Create An Account](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_1-create-an-account)
+2. [Subscribe To Our Products](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_2-subscribe-to-our-products)
+3. [Manage Your Subscriptions](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_3-manage-your-subscriptions)
+4. [Register Your App](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_4-register-your-app)
+5. [Start Building With Our Sandbox!](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#_5-start-building-with-our-sandbox)
 
 ## 1. Create An Account
 
-Follow this link to our developer portal and create an account [https://momodeveloper.mtn.com/signup](https://momodeveloper.mtn.com/signup)
+Follow this link to our developer portal and create an account: [https://momodeveloper.mtn.com/signup](https://momodeveloper.mtn.com/signup)
 
 You should receive a confirmation email in your inbox.
+
+### Note:
+
+An account activation link will be sent in an email.
+
+The activation link expires within 24 hours of it being sent, and you will need to register for another account.
 
 ## 2. Subscribe to our Products
 
 In the Products page on our developer portal you should see 4 items you can subscrbe to:
-    - Collection Widget
-    - Collections
-    - Disbursements
-    - Remittances
+  - Collection Widget
+  - Collections
+  - Disbursements
+  - Remittances
 
 ### Note:
 
@@ -29,13 +43,11 @@ Each product will have a dropdown with a brief description, a link to the corres
 
 - Click `Subscribe` to generate access to the Product.
 
-## 3. Manage Subscriptions
-
-### Subscriptions
+## 3. Manage Your Subscriptions
 
 Developers are issued a `Primary Key` and `Secondary Key` for every product.
 
-Both Primary and secondary Subscription key provides access to the API. Without one of them a developer cannot access any of the APIs.
+Both primary and secondary Subscription key provides access to the API. Without one of them a developer cannot access any of the APIs.
 
 Subscriptions are stored under the user profile and have no expiry.
 
@@ -48,9 +60,22 @@ Here you can view the status of the package, date it started, conduct cancellati
 
 Here is where you register all of your apps.
 
-Click the `Register Application` button to create your first app. When you are done creating your first app, it might look something like this.
+Click the `Register Application` button to create your first app. When you are done creating your first app, it might look something like this:
 
 <img :src="$withBase('/your-applications.png')" alt="your-applications.png)">
+
+
+## 5. Start Building With Our Sandbox!
+
+You are now ready to start we building with our Mobile Money Open API.
+
+Take a look at our [Use Cases](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#request-to-pay) to see how you can use our API.
+
+We suggest going over to our [Sandbox](https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST) and familiarize yourself with our [Sandbox Documentation](https://momodeveloper.mtn.com/mtn-momo-api-documentation/api-description/#sandbox-provisioning)
+
+
+
+
 
 
 
