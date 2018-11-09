@@ -8,10 +8,11 @@ module.exports = {
       '/',
       ['/introduction/', 'Introduction'],
       ['/quickstart/', 'Quickstart Guide'],
+      ['/api-description/', 'API User & API Key Management'],
       ['/use-cases/', 'Use Cases'],
-      ['/api-description/', 'API Description'],
+      ['/testing/', 'Testing'],
       ['/common-error-codes/', 'Common Error Codes'],
-      ['/testing/', 'Testing']
+      ['/brand-guidelines/', 'Brand Guidelines']
     ]
   }
 }
