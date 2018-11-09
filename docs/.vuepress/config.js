@@ -8,8 +8,8 @@ module.exports = {
       '/',
       ['/introduction/', 'Introduction'],
       ['/quickstart/', 'Quickstart Guide'],
-      ['/api-description/', 'API Description'],
       ['/use-cases/', 'Use Cases'],
+      ['/api-description/', 'API Description'],
       ['/common-error-codes/', 'Common Error Codes'],
       ['/testing/', 'Testing']
     ]
