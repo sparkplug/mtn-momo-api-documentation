@@ -14,21 +14,21 @@ There are two credentials used in the Open API.
 
 The subscription key is used to give access to APIs in the API Manager portal. A user is assigned a subscription Key as and when the user subscribes to products in the API Manager Portal.
 
-The API User and API Key are used to grant access to the wallet system in a specific country. API user and Key is wholly managed by the merchant through Partner Portal.
+The API User and API Key are used to grant access to the wallet system in a specific country. API user and Key are wholly managed by the merchant through Partner Portal.
 
-Merchants is allowed to generate/revoke API Keys through the Partner Portal.
+Merchants are allowed to generate/revoke API Keys through the Partner Portal.
 
 However, on Sandbox Environment a Provisioning API is exposed to enable developers generate own API User and API Key for testing purposes only.
 
 ### Subscription Key
 The subscription key is part of the header of all request sent to the API Manager. The subscription key can be found under user profile in the API Manager Portal.
 
-The subscription key is assigned to the `Ocp-Apim-Subscription-Key` parameter the header.
+The subscription key is assigned to the `Ocp-Apim-Subscription-Key` parameter of the header.
 
 ### API User And API Key Management
 The API user and API key are provisioned differently in the sandbox and production environment.
 
-In the Sandbox a provisioning API is used to create the API User and API Key, where as in the production environment the provisioning is done through the Merchant Portal.
+In the Sandbox a provisioning API is used to create the API User and API Key, whereas in the production environment the provisioning is done through the Merchant Portal.
 
 The sections below describe the different steps required in creating API User and API key in Sandbox and Production Environments.
 
@@ -38,7 +38,7 @@ The sections below describe the different steps required in creating API User an
 
 <img :src="$withBase('/create_apiuser.png')" alt="Create API User">
 
-a) The Provider sends a POST /provisioning/v1_0/apiuser request to Wallet platform.
+a) The Provider sends a POST `{baseURL}/apiuser` request to Wallet platform.
 
 b) The Provider specifies the UUID Reference ID in the request Header and the subscription Key.
 
@@ -50,7 +50,7 @@ d) Wallet Platform creates the User and responds with 201
 
 **Request:**
 
-POST `https://momodeveloper.mtn.com/v1_0/apiuser HTTP/1.1`
+POST `{baseURL}/apiuser HTTP/1.1`
 
 Host: `momodeveloper.mtn.com`
 
@@ -67,7 +67,7 @@ Ocp-Apim-Subscription-Key: `d484a1f0d34f4301916d0f2c9e9106a2`{"providerCallbackH
 
 <img :src="$withBase('/create_apikey.png')" alt="Create API Key">
 
-a) The Provider sends a POST /provisioning/v1_0/apiuser/{APIUser}/apikey request to Wallet platform.
+a) The Provider sends a POST `{baseURL}/apiuser/{APIUser}/apikey` request to Wallet platform.
 
 b) The Provider specifies the API User in the URL and subscription Key in the header.
 
@@ -79,7 +79,7 @@ d) Provider now has both API User and API Key created.
 
 **Request:**
 
-POST `/v1_0/apiuser/c72025f5-5cd1-4630-99e4-8ba4722fad56/apikey HTTP/1.1`
+POST `{baseURL}/apiuser/c72025f5-5cd1-4630-99e4-8ba4722fad56/apikey HTTP/1.1`
 
 Host: `momodeveloper.mtn.com`
 
@@ -97,13 +97,13 @@ content-length: 45
 ```
 ### GET API User Details
 
-Its possible to fetch API user details such as Call Back Host. However its not possible to fetch the API key.
+It is possible to fetch API user details such as Call Back Host. However, it is not possible to fetch the API key.
 
 Provider shall be required to generate a new Key should they lose the existing one.
 
 <img :src="$withBase('/get_apiuser_details.png')" alt="Get API User Details">
 
-a) The Provider sends a GET /provisioning/v1_0/apiuser/{APIUser} request to Wallet platform.
+a) The Provider sends a GET `{baseURL}/apiuser/{APIUser}` request to Wallet platform.
 
 b) The Provider specifies the API User in the URL and subscription Key in the header.
 
@@ -113,7 +113,7 @@ d) TargetEnvironment is preconfigured to sandbox in the Sandbox environment, the
 
 ### Example
 
-GET `/v1_0/apiuser/ c72025f5-5cd1-4630-99e4-8ba4722fad56`
+GET `{baseURL}/apiuser/ c72025f5-5cd1-4630-99e4-8ba4722fad56`
 
 Host: `momodeveloper.mtn.com`
 
@@ -176,9 +176,9 @@ The Open API is using Oauth 2.0 token for authentication of request. Client will
 
 The API user and API key are used in the basic authentication header when requesting the access token. The API user and key are managed in the Partner GUI for the country where the account is located. The Partner can create and manage API user and key from the Partner GUI.
 
-In case of sandbox the API Key and API User are managed through a Provisioning API as described on 3.2.2
+In the case of the Sandbox, the API Key and API User are managed through a Provisioning API as described on 3.2.2
 
-The received token have an expiry time. The token same token can be used used for transactions until it is expired. A new token is requested by using the `POST` /token service in the same way as for the initial token. The new token can be requested before the previous have expired to avoid authentication failure due to expired token.
+The received token has an expiry time. The same token can be used for transactions until it expires. A new token is requested by using the `POST` /token service in the same way as the initial token. The new token can be requested for before the previous one has expired to avoid authentication failure due to expired token.
 
 > **Important:**
  The token must be treated as a credential and kept secret. The party that have access to the token will be authenticated as the user that requested the token.
@@ -186,9 +186,9 @@ The received token have an expiry time. The token same token can be used used fo
 
  <img :src="$withBase('/oauth_img.png')" alt="oauth_img">
 
-a) Provider system request an access token using the API Key and API user as authentication.
-b) Wallet platform authenticates credentials and respond with the access token
-3) Provider system will use the access token for any request that is sent to Wallet Platform, e.g. `POST /requesttopay`
+a) Provider system requests an access token using the API Key and API user as authentication.
+b) Wallet platform authenticates credentials and responds with the access token
+c) Provider system will use the access token for any request that is sent to Wallet Platform, e.g. `POST /requesttopay`
 
 **Note: The same token shall be used if it is not expired.**
 
@@ -202,11 +202,11 @@ POSTmethod is used for creating a resource in Wallet Platform. The request inclu
 
 Example: `POST /requesttopay`
 
-The `POST` is an asynchronous method. The Wallet Platform will validate the request to ensure that it correct according to the API specification and then answer with HTTP 202 Accepted. The created resource will get status PENDING. Once the request has been processed the status will be updated to SUCCESSFUL or FAILED. The requester may then be notified of the final status through callback as described in 4.1
+The `POST` is an asynchronous method. The Wallet Platform will validate the request to ensure that it is correct according to the API specification and then answer with HTTP 202 Accepted. The created resource will get status PENDING. Once the request has been processed the status will be updated to SUCCESSFUL or FAILED. The requester may then be notified of the final status through callback as described in 4.1
 
 ### GET
 
-GET is used for requesting information about a specific resource. The URL in the GET shall include the reference of the resource. If a resource was created with POST then the reference id that was provided in the request is used a the identity of the resource.
+GET is used for requesting information about a specific resource. The URL in the GET shall include the reference of the resource. If a resource was created with POST then the reference id that was provided in the request is used as the identity of the resource.
 
 Example:
 

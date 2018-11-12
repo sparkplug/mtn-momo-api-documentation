@@ -7,11 +7,11 @@ sidebarDepth: 2
 
 Here you'll find the variety of ways that you can use the API:
 
-1. [Request To Pay](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#request-to-pay)
-2. [Pre-Approval](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#pre-approval)
-3. [Transfer](https://momodeveloper.mtn.com/mtn-momo-api-documentation/use-cases/#transfer)
-4. [Validate Account Holder](https://momodeveloper.mtn.com/mtn-momo-api-documentation//use-cases/#validate-account-holder)
-5. [Get Balance](https://momodeveloper.mtn.com/mtn-momo-api-documentation/quickstart/#validate-account-holder)
+1. Request To Pay
+2. Pre-Approval
+3. Transfer
+4. Validate Account Holder
+5. Get Balance
 
 
 ## Request to Pay

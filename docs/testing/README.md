@@ -14,7 +14,7 @@ The Sandbox URL is:
 
 ## OAuth Token
 
-OAuth Token is generated from the merchants’ API Key and Secret. The `API Key` and `API Secret` can be obtained through the provisioning API in Sandbox, as described in the API User and API KEY Management section.
+OAuth Token is generated from the merchants’ API Key and Secret. The `API Key` and `API Secret` can be obtained through the provisioning API in Sandbox, as described in the [API User and API Key Management](/api-description/#sandbox-provisioning) section.
 
 ## Target Environment
 
@@ -35,6 +35,7 @@ The following Numbers are predefined with respective response for all Testcases
 | 46733123452      | Timeout |
 | 46733123453     |  Ongoing (will answer pending first and if requested again after 30 seconds it will respond success)|
 | 46733123454     | Pending |
+| Any Other Number | Success |
 
 ## Common Error Codes
 

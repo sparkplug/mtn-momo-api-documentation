@@ -9,23 +9,21 @@ Y'ello, in this section we'll walk you through getting up and running on our Mob
 
 Here you will:
 
-1. Create An Account
+1. Signup For An Account
 2. Subscribe To Our Products
 3. Manage Your Subscriptions
 4. Register Your App
 5. Generate API User and API Key
 
-## 1. Create An Account
+## 1. Signup For An Account
 
-Follow this link to our developer portal and create an account: [https://momodeveloper.mtn.com/signup](https://momodeveloper.mtn.com/signup)
-
-You should receive a confirmation email in your inbox.
+Follow this link to our developer portal and [signup](https://momodeveloper.mtn.com/signup) for an account. You should receive a confirmation email in your inbox.
 
 ::: tip 
 An account activation link will be sent in an email. The activation link expires within 24 hours of it being sent, and you will need to register for another account.
 :::
 
-## 2. Subscribe to our Products
+## 2. Subscribe To Our Products
 
 In the Products page on our developer portal you should see 4 items you can subscrbe to:
   - Collection Widget
