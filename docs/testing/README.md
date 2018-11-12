@@ -36,7 +36,3 @@ The following Numbers are predefined with respective response for all Testcases
 | 46733123453     |  Ongoing (will answer pending first and if requested again after 30 seconds it will respond success)|
 | 46733123454     | Pending |
 | Any Other Number | Success |
-
-## Common Error Codes
-
-Common error codes can be seen in the next section.
