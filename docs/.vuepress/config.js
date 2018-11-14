@@ -7,10 +7,12 @@ module.exports = {
     sidebar: [
       '/',
       ['/introduction/', 'Introduction'],
-      ['/getting-started/', 'Getting Started'],
-      ['/api-description/', 'API Description'],
+      ['/quickstart/', 'Quickstart Guide'],
+      ['/api-description/', 'API User & API Key Management'],
       ['/use-cases/', 'Use Cases'],
-      ['/testing/', 'Testing']
+      ['/testing/', 'Testing'],
+      ['/common-error-codes/', 'Common Error Codes'],
+      ['/brand-guidelines/', 'Brand Guidelines']
     ]
   }
 }

@@ -1,19 +1,86 @@
 ---
-title: Getting Started
-sidebarDepth: 3
+title: Quickstart
+sidebarDepth: 0
 ---
 
-# Getting Started
+# Quickstart Guide
 
-In order to use the API platform, you will need to register for an account [here]( https://pg-all.portal.azure-api.net/). You can register with an individual or company account.
+Y'ello, in this section we'll walk you through getting up and running on our Mobile Money Open API.
 
-An account activation link will be sent in an email to the email address you used in registering for a developer account; the activation link expires within 24 hours of it being sent, and you will need to register for another account. The account activation link enables you to activate your developer account and set a password for your account.
+Here you will:
+
+1. Signup For An Account
+2. Subscribe To Our Products
+3. Manage Your Subscriptions
+4. Register Your App
+5. Generate API User and API Key
+
+## 1. Signup For An Account
+
+Follow this link to our developer portal and [signup](https://momodeveloper.mtn.com/signup) for an account. You should receive a confirmation email in your inbox.
+
+::: tip 
+An account activation link will be sent in an email. The activation link expires within 24 hours of it being sent, and you will need to register for another account.
+:::
+
+## 2. Subscribe To Our Products
+
+In the Products page on our developer portal you should see 4 items you can subscrbe to:
+  - Collection Widget
+  - Collections
+  - Disbursements
+  - Remittances
+
+### Note:
+
+Each product will have a dropdown with a brief description, a link to the corresponding documentation and `Subscribe` button.
+
+<img :src="$withBase('/products.png')" alt="products">
+
+- Click `Subscribe` to generate access to the Product.
+
+## 3. Manage Your Subscriptions
+
+Developers are issued a `Primary Key` and `Secondary Key` for every product.
+
+Both primary and secondary Subscription key provides access to the API. Without one of them a developer cannot access any of the APIs.
+
+Subscriptions are stored under the user profile and have no expiry.
+
+Here you can view the status of the package, date it started, conduct cancellation or activation actions, and also show or regenerate your `Primary Key` and `Secondary Key`
+
+<img :src="$withBase('/your-subscriptions.png')" alt="your-subscriptions.png">
+
+
+## 4. Register your App
+
+Here is where you register all of your apps.
+
+Click the `Register Application` button to create your first app. When you are done creating your first app, it might look something like this:
+
+<img :src="$withBase('/your-applications.png')" alt="your-applications.png)">
+
+
+## 5. Generate API User and API Key
+
+You are now almost ready to start we building with our Mobile Money Open API. The next thing we need to do is to Provision the API User and API Key using the Sandbox Provisioning API. We do this in the next section.
 
 
 
-After you have activated your account, and logged in, click on your “Username” at the top of the login page; select “PROFILE” from the drop down list. 
 
-You should now have access to a portal where you can view your profile information, your subscriptions and your applications. Let us explore this portal for a bit.
+
+
+
+
+
+
+
+<!-- Take a look at our [Use Cases](/use-cases/#request-to-pay) to see how you can use our API.
+
+We suggest going over to our [Sandbox](https://momodeveloper.mtn.com/docs/services/collection/operations/requesttopay-POST) and familiarize yourself with our [Sandbox Documentation](https://momodeveloper.mtn.com/mtn-momo-api-documentation/api-description/#sandbox-provisioning) -->
+
+
+<!--
 
 ## Profile
 
@@ -25,7 +92,7 @@ A developer is issued with a `Primary Key` and `Secondary Key` for every product
 
 This section provides information about your current subscription package. Here you can view the status of the package, date it started, conduct cancellation or activation actions, and also show or regenerate your `Primary Key` and `Secondary Key`
 
-![Your subscriptions](/your-subscriptions.png) 
+![Your subscriptions](/your-subscriptions.png)
 
 ::: warning
 Please keep these keys a secret. :wink:
@@ -40,7 +107,7 @@ You will also notice that in the top right corner to the subscriptions is the `A
 
 In this section is where all great ideas begin. Here is where you register all your apps. Click the `Register Application` button to create your first app. When you are done creating your first app, it might look something like this.
 
-![Your Applications](/your-applications.png) 
+![Your Applications](/your-applications.png)
 
 
 ## Product Subscription
@@ -67,7 +134,7 @@ This product package contains 4 APIs:
 - [Test Oauth API](https://pg-all.portal.azure-api.net/docs/services/test-oauth)
 - [Test Partner Gateway API](https://pg-all.portal.azure-api.net/docs/services/test-partner-gateway-api)
 
-To select this package, click the `subscribe` button to confirm. 
+To select this package, click the `subscribe` button to confirm.
 
 ### Unlimited Package
 
@@ -108,5 +175,4 @@ If all the information provided checks out, your application should now be ready
 There is also a MoMo Widget that is not listed along with the packages. This widget can be used to integrate a MoMoPay checkout button to accept MoMo payments on your e-commerce site. You can see more about it [here](https://pg-all.portal.azure-api.net/widget-api)
 
 
-
-
+-->
